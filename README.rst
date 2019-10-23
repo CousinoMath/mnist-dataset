@@ -1,4 +1,2 @@
-mnist-dataset
-=============
-
-MNIST Handwritten digit recognition problem
+MNIST Handwritten Digit Recognition Problem
+===========================================

@@ -50,8 +50,8 @@ def load(filename):
 class QuadraticCost(object):
     @staticmethod
     def fn(a, y):
-        """:a: predicted output
-        :y: observed output
+        """:param a: predicted output
+        :param y: observed output
         :returns: the cost associated betweeen a predicted output  ``a``
         and observed output ``y``"""
         return 0.5 * np.linalg.norm(a - y) ** 2
@@ -64,8 +64,8 @@ class QuadraticCost(object):
 class CrossEntropyCost(object):
     @staticmethod
     def fn(a, y):
-        """:a: predicted output
-        :y: observed output
+        """:param a: predicted output
+        :param y: observed output
         :returns: the cost associated betweeen a predicted output  ``a``
         and observed output ``y``"""
         # np.nan_to_num ensures that 0.0 * log 0.0 is converted (correctly) to
@@ -79,7 +79,7 @@ class CrossEntropyCost(object):
 
 class Network(object):
     def __init__(self, sizes, cost=CrossEntropyCost):
-        """:sizes: a list of number of neurons in the respective layers
+        """:param sizes: a list of number of neurons in the respective layers
         of the network
         :returns: a Network object with biases initialized as standard
         normal deviates, and weights initialized as standardized normal
@@ -123,13 +123,13 @@ class Network(object):
         """Use stochastic gradient descent to train the neural network.
         We can monitor the cost and accuracy on either the evaluation
         data or the training data, by setting the appropriate flags.
-        :training_data: list of tuples ``(x, y)`` representing inputs
+        :param training_data: list of tuples ``(x, y)`` representing inputs
         and outputs
-        :epochs: number of epochs to run through
-        :mini_batch_size: size of each mini-batch
-        :eta: learning rate
-        :lambda_: regularization parameter
-        :evaluation_data: usually either validation or testing data
+        :param epochs: number of epochs to run through
+        :param mini_batch_size: size of each mini-batch
+        :param eta: learning rate
+        :param lambda_: regularization parameter
+        :param evaluation_data: usually either validation or testing data
         :returns: a tuple of evaluation cost & accuracy and training
         cost & accuracy"""
         if evaluation_data: n_test = len(evaluation_data)
@@ -165,11 +165,11 @@ class Network(object):
     def update_mini_batch(self, mini_batch, eta, lambda_, n):
         """Update network's weights and biases by gradient descent via
         backpropagation to a single mini-batch.
-        :mini_batch: list of tuples ``(x, y)`` representing inputs and
+        :param mini_batch: list of tuples ``(x, y)`` representing inputs and
         outputs
-        :eta: learning rate
-        :lambda_: regularization parameter
-        :n: total size of the training data"""
+        :param eta: learning rate
+        :param lambda_: regularization parameter
+        :param n: total size of the training data"""
         nabla_b = [np.zeros(b.shape) for b in self.biases]
         nabla_w = [np.zeros(w.shape) for w in self.weights]
         for x, y in mini_batch:
@@ -215,10 +215,10 @@ class Network(object):
         """Return the number of inputs in ``data`` for which the neural
         network outputs the correct result.
 
-        :convert: should be set to ``False`` if data set is validation
+        :param convert: should be set to ``False`` if data set is validation
         or test data (the usual case), and to ``True`` if the data set
         is the training data.
-        :output_fn: is the output function to be applied to the
+        :param output_fn: is the output function to be applied to the
         network's output."""
         results = [(output_fn(self.feed_forward(x)), output_fn(y))
                     for (x, y) in data]
@@ -226,7 +226,7 @@ class Network(object):
     
     def total_cost(self, data, lambda_):
         """Return the total cost for the data set ``data``.
-        :convert: should be set to ``False`` if the data set is
+        :param convert: should be set to ``False`` if the data set is
         validation or testing data (the usual case), and to ``True`` if
         the data set is the training data."""
         cost = 0.0

@@ -175,13 +175,13 @@ class ConvolutionalPoolLayer(object):
 
     def __init__(self, filter_shape, image_shape, poolsize=(2, 2),
                     activation_fn=sigmoid):
-        """:filter_shape: is a 4-tuple consisting of the number of
+        """:param filter_shape: is a 4-tuple consisting of the number of
         filters, the number of input feature maps, the filter height,
         and the filter width.
-        :image_shape: is a 4-tuple consisting of the mini-batch size,
+        :param image_shape: is a 4-tuple consisting of the mini-batch size,
         the number of input feature maps, the image height, and the
         image width
-        :poolsize: is a 2-tuple consisting of the ``y`` and ``x``
+        :param poolsize: is a 2-tuple consisting of the ``y`` and ``x``
         pooling sizes"""
         self.filter_shape = filter_shape
         self.image_shape = image_shape

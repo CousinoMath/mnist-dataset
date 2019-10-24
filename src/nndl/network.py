@@ -31,7 +31,7 @@ class Network(object):
         network are initialized randomly, using standard normal
         deviates.
 
-        :sizes: contains the number of neurons in the
+        :param sizes: contains the number of neurons in the
         respective layers of the network."""
         self.num_layers = len(sizes)
         self.sizes = sizes
@@ -64,12 +64,12 @@ class Network(object):
         """Train the neural network using mini-batch stochastic
         gradient descent.
         
-        :training_data: list of tuples ``(x, y)`` representing the
+        :param training_data: list of tuples ``(x, y)`` representing the
         training inputs and the desired outputs.
-        :epochs: number of epochs
-        :mini_batch_size: size of mini-batches
-        :eta: learning rate
-        :test_data: test data against which the network will be
+        :param epochs: number of epochs
+        :param mini_batch_size: size of mini-batches
+        :param eta: learning rate
+        :param test_data: test data against which the network will be
         evaluated."""
         if test_data: n_test = len(test_data)
         n = len(training_data)
@@ -89,8 +89,8 @@ class Network(object):
         """Update the network's weights and biases by applying
         gradient descent using backpropagation to a single mini batch.
 
-        :mini_batch: list of tuples ``(x, y)``
-        :eta: the learning rate"""
+        :param mini_batch: list of tuples ``(x, y)``
+        :param eta: the learning rate"""
         nabla_b = [np.zeros(b.shape) for b in self.biases]
         nabla_w = [np.zeros(w.shape) for w in self.weights]
         for x, y in mini_batch:
@@ -111,8 +111,8 @@ class Network(object):
         ``nabla_w`` are layer-by-layer lists of numpy arrays, similar
         to ``self.biases`` and ``self.weights``.
         
-        :x: input activations
-        :y: output activations
+        :param x: input activations
+        :param y: output activations
         :returns: a pair of layer-by-layer lists of numpy arrays,
         similar to ``self.biases`` and ``self.weights``"""
         nabla_b = [np.zeros(b.shape) for b in self.biases]
